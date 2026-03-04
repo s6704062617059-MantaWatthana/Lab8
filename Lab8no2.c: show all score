@@ -1,10 +1,8 @@
 #include <stdio.h>
 
-int checkscore(char std[]);
+int countNo1Correct(char ans[][10], char keys[]);
 
 int main() {
-    int i, j;
-    char s[10];
 
     char ans[8][10]={
         {'A','B','A','C','C','D','E','E','A','D'},
@@ -17,25 +15,23 @@ int main() {
         {'E','B','E','C','C','D','E','E','A','D'}
     };
 
-    for(i = 0; i < 8; i++) {
-        for(j = 0; j < 10; j++) {
-            s[j] = ans[i][j];
-        }
-        printf("std %d => %d\n", (i+1), checkscore(s));
-    }
+    char keys[10]={'D','B','D','C','C','D','A','E','A','D'};
+
+    printf("Number of students who answered question 1 correctly: %d\n",
+           countNo1Correct(ans, keys));
 
     return 0;
 }
 
-int checkscore(char std[]){
-    char keys[10]={'D','B','D','C','C','D','A','E','A','D'};
-    int score = 0;
+int countNo1Correct(char ans[][10], char keys[]){
     int i;
+    int count = 0;
 
-    for(i = 0; i < 10; i++) {
-        if(std[i] == keys[i]) {
-            score++;
+    for(i = 0; i < 8; i++){
+        if(ans[i][0] == keys[0]){
+            count++;
         }
     }
-    return score;
+
+    return count;
 }
