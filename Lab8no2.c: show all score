@@ -3,7 +3,7 @@
 int checkscore(char std[]);
 
 int main() {
-    int i, j;
+    int i,j;
     char s[10];
 
     char ans[8][10]={
